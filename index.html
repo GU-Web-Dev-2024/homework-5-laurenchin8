@@ -142,6 +142,33 @@
         ];
         // Add your JavaScript code here.
         // Later, move this to an external JavaScript file for better organization.
+
+        // ART PANEL CLICK EVENT
+        let viewedCount = 0;
+        // first getting all art panels
+        const panels = document.querySelectorAll(".art-panel")
+        for (let panel in panels) {
+            panel.addEventListener('click', changeBackgroundColor);
+        }
+
+        // function for changing background color if not already
+        function changeBackgroundColor(e) {
+            if (panel.style.background-color == "#eeeeee") {
+                viewedCount++;
+                panel.style.setProperty("background-color", "light green");
+                document.getElementById('counter').innerText = `Artworks Viewed: ${viewedCount}`;
+            }
+        }
+
+        // reset button functionality
+        document.getElementById('reset-button').addEventListener('click', function() {
+            for (let panel in panels) {
+                panel.style.setProperty("background-color", "eeeeee");
+            }
+            viewedCount = 0;
+            document.getElementById('counter').innerText = `Artworks Viewed: ${viewedCount}`;
+        });
+        
     </script>
 </body>
 
