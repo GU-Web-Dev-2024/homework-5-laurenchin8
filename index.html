@@ -148,10 +148,12 @@
         // first getting all art panels
         const panels = document.querySelectorAll(".art-panel")
         for (let i = 0; i < panels.length; i++) {
-            panels[i].addEventListener("click", function(){
-                if (panels[i].style.getPropertyValue("background-color") == "#eee") {
+            panels[i].addEventListener("click", function() {
+                const currentColor = getComputedStyle(panels[i]).backgroundColor;
+                // Check if the current color is light grey (#eee)
+                if (currentColor === "rgb(238, 238, 238)") { // This is the RGB equivalent of #eee
                     viewedCount++;
-                    panels[i].style.setProperty("background-color", "lightgreen");
+                    panels[i].style.backgroundColor = "lightgreen"; // Change to light green
                     document.getElementById('counter').innerText = `Artworks Viewed: ${viewedCount}`;
                 }
             });
