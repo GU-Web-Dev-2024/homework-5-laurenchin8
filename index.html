@@ -147,23 +147,20 @@
         let viewedCount = 0;
         // first getting all art panels
         const panels = document.querySelectorAll(".art-panel")
-        for (let panel in panels) {
-            panel.addEventListener('click', changeBackgroundColor);
-        }
-
-        // function for changing background color if not already
-        function changeBackgroundColor(e) {
-            if (panel.style.background-color == "#eeeeee") {
-                viewedCount++;
-                panel.style.setProperty("background-color", "light green");
-                document.getElementById('counter').innerText = `Artworks Viewed: ${viewedCount}`;
-            }
+        for (let i = 0; i < panels.length; i++) {
+            panels[i].addEventListener("click", function(){
+                if (panels[i].style.getPropertyValue("background-color") == "#eee") {
+                    viewedCount++;
+                    panels[i].style.setProperty("background-color", "light green");
+                    document.getElementById('counter').innerText = `Artworks Viewed: ${viewedCount}`;
+                }
+            });
         }
 
         // reset button functionality
         document.getElementById('reset-button').addEventListener('click', function() {
-            for (let panel in panels) {
-                panel.style.setProperty("background-color", "eeeeee");
+            for (let i = 0; i < panels.length; i++) {
+                panels[i].style.setProperty("background-color", "#eee"); // Reset to default background color
             }
             viewedCount = 0;
             document.getElementById('counter').innerText = `Artworks Viewed: ${viewedCount}`;
